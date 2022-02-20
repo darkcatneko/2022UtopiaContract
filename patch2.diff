@@ -1,0 +1,40 @@
+From ee08cd6548658f5559b81bc6e88c8b499f88a701 Mon Sep 17 00:00:00 2001
+From: "DESKTOP-EUTIRR1\\User" <darkcat7126@gmail.com>
+Date: Mon, 3 Jan 2022 17:16:43 +0800
+Subject: [PATCH] =?UTF-8?q?=E6=9C=80=E6=96=B0=E9=81=BA=E7=85=A7?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Assets/Scripts/UI_Controller.cs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Assets/Scripts/UI_Controller.cs b/Assets/Scripts/UI_Controller.cs
+index 6ce1776..73100cc 100644
+--- a/Assets/Scripts/UI_Controller.cs
++++ b/Assets/Scripts/UI_Controller.cs
+@@ -71,9 +71,9 @@ public class UI_Controller : MonoBehaviour
+         }
+         else if (InGameTime.instance.PassMin == 1020)
+         {
+-            this.GetComponent<Animator>().enabled = true;
++            this.GetComponentInParent<Animator>().enabled = true;
+             StartCoroutine(Delay.DelayToInvokeDo(() => { DayCycleUI.GetComponent<Image>().sprite = DayCircle[1]; }, 0.5f));
+-            StartCoroutine(Delay.DelayToInvokeDo(() => { this.GetComponent<Animator>().enabled = false; }, 1f));
++            StartCoroutine(Delay.DelayToInvokeDo(() => { this.GetComponentInParent<Animator>().enabled = false; }, 1f));
+ 
+         }
+         else if(InGameTime.instance.PassMin > 1020 && InGameTime.instance.PassMin < 1140)
+@@ -85,7 +85,7 @@ public class UI_Controller : MonoBehaviour
+         {
+             DayCycleUI.GetComponent<Image>().sprite = DayCircle[2];
+             StartCoroutine(Delay.DelayToInvokeDo(() => { DayCycleUI.GetComponent<Image>().sprite = DayCircle[2]; }, 0.5f));
+-            StartCoroutine(Delay.DelayToInvokeDo(() => { this.GetComponent<Animator>().enabled = false; }, 1f));
++            StartCoroutine(Delay.DelayToInvokeDo(() => { this.GetComponentInParent<Animator>().enabled = false; }, 1f));
+         }
+         else if (InGameTime.instance.PassMin > 1140)
+         {
+-- 
+2.30.2.windows.1
+

@@ -1,0 +1,321 @@
+From 68744d6e1ae2889996955b723563efa564ac4ed0 Mon Sep 17 00:00:00 2001
+From: "DESKTOP-EUTIRR1\\User" <darkcat7126@gmail.com>
+Date: Wed, 29 Dec 2021 20:45:57 +0800
+Subject: [PATCH] toolbar
+
+---
+ Assets/InventorySystem/ItemBarDisplay.cs      |  77 +++++++++++
+ Assets/InventorySystem/ItemBarDisplay.cs.meta |  11 ++
+ .../Items/Scripts/ItemObject.cs               |   1 +
+ .../Items/Scripts/SeedObject.cs               |  11 ++
+ .../Items/Scripts/SeedObject.cs.meta          |  11 ++
+ Assets/Scripts/EmptyFarmSpace.cs              | 126 +++++++++++-------
+ 6 files changed, 192 insertions(+), 45 deletions(-)
+ create mode 100644 Assets/InventorySystem/ItemBarDisplay.cs
+ create mode 100644 Assets/InventorySystem/ItemBarDisplay.cs.meta
+ create mode 100644 Assets/Scriptable Objects/Items/Scripts/SeedObject.cs
+ create mode 100644 Assets/Scriptable Objects/Items/Scripts/SeedObject.cs.meta
+
+diff --git a/Assets/InventorySystem/ItemBarDisplay.cs b/Assets/InventorySystem/ItemBarDisplay.cs
+new file mode 100644
+index 0000000..dcc5350
+--- /dev/null
++++ b/Assets/InventorySystem/ItemBarDisplay.cs
+@@ -0,0 +1,77 @@
++using System.Collections;
++using System.Collections.Generic;
++using UnityEngine;
++using TMPro;
++
++public class ItemBarDisplay : MonoBehaviour
++{
++    public InventoryObject inventory;
++    public int X_START;
++    public int Y_START;
++    public int X_SPACE_BETWEEN_ITEM;
++    public int NUMBER_OF_COLUMN;
++    public int Y_SAPCE_BETWEEN_ITEM;
++
++    int MainToolNum = 0;
++    public InventorySlot items;
++
++    Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
++    public static ItemBarDisplay instance;
++    private void Awake()
++    {
++        instance = this;
++    }
++    void Start()
++    {
++        CreateDisplay();
++        items = inventory.Container[0];  
++    }
++
++    // Update is called once per frame
++    void Update()
++    {
++        UpdateDisplay();
++        if (Input.GetKeyDown(KeyCode.Q))
++        {
++            MainToolNum--;
++            MainToolNum = Mathf.Clamp(MainToolNum, 0, 5);
++            items = inventory.Container[MainToolNum];
++        }
++        if (Input.GetKeyDown(KeyCode.E))
++        {
++            MainToolNum++;
++            MainToolNum = Mathf.Clamp(MainToolNum, 0, 5);
++            items = inventory.Container[MainToolNum];
++        }
++    }
++    public void UpdateDisplay()
++    {
++        for (int i = 0; i < NUMBER_OF_COLUMN; i++)
++        {
++            if (itemsDisplayed.ContainsKey(inventory.Container[i]))
++            {
++                itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
++            }
++            else
++            {
++                var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
++                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
++                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
++                itemsDisplayed.Add(inventory.Container[i], obj);
++            }
++        }
++    }
++    public void CreateDisplay()
++    {
++        for (int i = 0; i < NUMBER_OF_COLUMN; i++)
++        {
++            var obj = Instantiate(inventory.Container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
++            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
++            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
++        }
++    }
++    public Vector3 GetPosition(int i)
++    {
++        return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + ((-Y_SAPCE_BETWEEN_ITEM) * (i / NUMBER_OF_COLUMN)));
++    }
++}
+diff --git a/Assets/InventorySystem/ItemBarDisplay.cs.meta b/Assets/InventorySystem/ItemBarDisplay.cs.meta
+new file mode 100644
+index 0000000..de5266f
+--- /dev/null
++++ b/Assets/InventorySystem/ItemBarDisplay.cs.meta
+@@ -0,0 +1,11 @@
++fileFormatVersion: 2
++guid: 4c6bfec4a5e9ea54786b8370eb68e0f8
++MonoImporter:
++  externalObjects: {}
++  serializedVersion: 2
++  defaultReferences: []
++  executionOrder: 0
++  icon: {instanceID: 0}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Scriptable Objects/Items/Scripts/ItemObject.cs b/Assets/Scriptable Objects/Items/Scripts/ItemObject.cs
+index db9244a..800a1c1 100644
+--- a/Assets/Scriptable Objects/Items/Scripts/ItemObject.cs	
++++ b/Assets/Scriptable Objects/Items/Scripts/ItemObject.cs	
+@@ -5,6 +5,7 @@ using UnityEngine;
+ public enum ItemType
+ {
+     Potion,
++    Seed,
+     Default
+ }
+ public abstract class ItemObject : ScriptableObject
+diff --git a/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs b/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs
+new file mode 100644
+index 0000000..fbae711
+--- /dev/null
++++ b/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs	
+@@ -0,0 +1,11 @@
++using System.Collections;
++using System.Collections.Generic;
++using UnityEngine;
++[CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Seed")]
++public class SeedObject : ItemObject
++{
++    public void Awake()
++    {
++        type = ItemType.Seed;
++    }
++}
+diff --git a/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs.meta b/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs.meta
+new file mode 100644
+index 0000000..34ffa63
+--- /dev/null
++++ b/Assets/Scriptable Objects/Items/Scripts/SeedObject.cs.meta	
+@@ -0,0 +1,11 @@
++fileFormatVersion: 2
++guid: 59c407a3b4836e043926e465f41f13fb
++MonoImporter:
++  externalObjects: {}
++  serializedVersion: 2
++  defaultReferences: []
++  executionOrder: 0
++  icon: {instanceID: 0}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Scripts/EmptyFarmSpace.cs b/Assets/Scripts/EmptyFarmSpace.cs
+index 3a4ed8a..4b5f7a3 100644
+--- a/Assets/Scripts/EmptyFarmSpace.cs
++++ b/Assets/Scripts/EmptyFarmSpace.cs
+@@ -33,53 +33,71 @@ public class EmptyFarmSpace : MonoBehaviour
+     {
+         if (InEmptyFarmRange == true)
+         {
+-            if (other.gameObject.CompareTag("Player"))
++            if (other.gameObject.CompareTag("Player") && ItemBarDisplay.instance.items.item != null)
+             {
+-                if (Input.GetKeyDown(KeyCode.O) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
+-                {
+-                    other.GetComponentInParent<PlayerMovement>().IM_Planting();
+-                    thisfarmspace.PlantWhich = WhichPlant.cabbage;
+-                    StartCoroutine(Delay.DelayToInvokeDo(() =>
+-                    {
+-                        GameObject planted_cabbage = Instantiate(plantPrefab[0], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
+-                        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.cabbage, thisfarmspace.FarmID, false);
+-                        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
+-                        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
+-                        Destroy(vfx, 1f);
+-                        this.gameObject.GetComponent<Collider>().enabled = false;
++                //if (Input.GetKeyDown(KeyCode.O) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
++                //{
++                //    other.GetComponentInParent<PlayerMovement>().IM_Planting();
++                //    thisfarmspace.PlantWhich = WhichPlant.cabbage;
++                //    StartCoroutine(Delay.DelayToInvokeDo(() =>
++                //    {
++                //        GameObject planted_cabbage = Instantiate(plantPrefab[0], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
++                //        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.cabbage, thisfarmspace.FarmID, false);
++                //        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
++                //        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
++                //        Destroy(vfx, 1f);
++                //        this.gameObject.GetComponent<Collider>().enabled = false;
+ 
+-                    }
+-                    , 1.5f));
+-                }
+-                if (Input.GetKeyDown(KeyCode.P) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
++                //    }
++                //    , 1.5f));
++                //}
++                //if (Input.GetKeyDown(KeyCode.P) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
++                //{
++                //    other.GetComponentInParent<PlayerMovement>().IM_Planting();
++                //    thisfarmspace.PlantWhich = WhichPlant.tomato;
++                //    StartCoroutine(Delay.DelayToInvokeDo(() =>
++                //    {
++                //        GameObject planted_cabbage = Instantiate(plantPrefab[1], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
++                //        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.tomato, thisfarmspace.FarmID, false);
++                //        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
++                //        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
++                //        Destroy(vfx, 1f);
++                //        this.gameObject.GetComponent<Collider>().enabled = false;
++                //    }
++                //    , 1.5f));
++                //}
++                //if (Input.GetKeyDown(KeyCode.T) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
++                //{
++                //    other.GetComponentInParent<PlayerMovement>().IM_Planting();
++                //    thisfarmspace.PlantWhich = WhichPlant.corn;
++                //    StartCoroutine(Delay.DelayToInvokeDo(() =>
++                //    {
++                //        GameObject planted_cabbage = Instantiate(plantPrefab[2], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
++                //        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.corn, thisfarmspace.FarmID, false);
++                //        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
++                //        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
++                //        Destroy(vfx, 1f);
++                //        this.gameObject.GetComponent<Collider>().enabled = false;
++                //    }
++                //    , 1.5f));
++                //}
++                if (Input.GetKeyDown(KeyCode.O) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0 && ItemBarDisplay.instance.items.item.type==ItemType.Seed)//plant a cabbage
+                 {
+-                    other.GetComponentInParent<PlayerMovement>().IM_Planting();
+-                    thisfarmspace.PlantWhich = WhichPlant.tomato;
+-                    StartCoroutine(Delay.DelayToInvokeDo(() =>
++                    switch(ItemBarDisplay.instance.items.item.Item_ID)
+                     {
+-                        GameObject planted_cabbage = Instantiate(plantPrefab[1], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
+-                        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.tomato, thisfarmspace.FarmID, false);
+-                        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
+-                        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
+-                        Destroy(vfx, 1f);
+-                        this.gameObject.GetComponent<Collider>().enabled = false;
++                        case 1:
++                            InstantiatePlant(WhichPlant.cabbage,0);
++                            break;
++                        case 3:
++                            InstantiatePlant(WhichPlant.tomato,1);
++                            break;
++                        case 5:
++                            InstantiatePlant(WhichPlant.corn,2);
++                            break;
++                            
+                     }
+-                    , 1.5f));
+-                }
+-                if (Input.GetKeyDown(KeyCode.T) && thisfarmspace.PlantWhich == WhichPlant.EmptySpace && other.GetComponentInParent<PlayerMovement>().movement.z <= 0)//plant a cabbage
+-                {
+-                    other.GetComponentInParent<PlayerMovement>().IM_Planting();
+-                    thisfarmspace.PlantWhich = WhichPlant.corn;
+-                    StartCoroutine(Delay.DelayToInvokeDo(() =>
+-                    {
+-                        GameObject planted_cabbage = Instantiate(plantPrefab[2], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
+-                        planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, WhichPlant.corn, thisfarmspace.FarmID, false);
+-                        PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
+-                        GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
+-                        Destroy(vfx, 1f);
+-                        this.gameObject.GetComponent<Collider>().enabled = false;
+-                    }
+-                    , 1.5f));
++
++                    
+                 }
+             }
+         }
+@@ -98,7 +116,7 @@ public class EmptyFarmSpace : MonoBehaviour
+         if (others.gameObject.CompareTag("Player"))
+         {
+             InEmptyFarmRange = false;
+-            other = null;            
++            other = null;           
+         }
+     }
+ 
+@@ -108,6 +126,24 @@ public class EmptyFarmSpace : MonoBehaviour
+     }
+ 
+     //funtion(id) 根據植物id生成植物
+-    
+-    
++
++    public void InstantiatePlant(WhichPlant _whichplant,int PlantNum)
++    {
++        other.GetComponentInParent<PlayerMovement>().IM_Planting();
++        thisfarmspace.PlantWhich = _whichplant;
++        StartCoroutine(Delay.DelayToInvokeDo(() =>
++        {
++            GameObject planted_cabbage = Instantiate(plantPrefab[PlantNum], this.transform.position, Quaternion.Euler(-45f, 180f, 0));
++            planted_cabbage.GetComponent<PlantPerform>().SetPlantIdentity(PlantState.seed, _whichplant, thisfarmspace.FarmID, false);
++            PlantSaveFile = planted_cabbage.GetComponent<PlantPerform>().This_Plant;
++            GameObject vfx = Instantiate(testVFX, this.transform.position + new Vector3(0, 0.11f, 0.1f), Quaternion.Euler(45f, 0, 0));
++            Destroy(vfx, 1f);
++            this.gameObject.GetComponent<Collider>().enabled = false;
++
++        }
++        , 1.5f));
++    }
++
++
++
+ }
+-- 
+2.30.2.windows.1
+
