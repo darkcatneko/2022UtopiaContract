@@ -1,0 +1,383 @@
+fileFormatVersion: 2
+guid: 9e5f043f6932b404d9771e88d28d80f2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: 'back pack '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 3324
+      width: 295
+      height: 209
+    spriteID: c8bf6bb6cf1c6ae42818f2d39366d5c7
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -3627, y: 377}
+  - name: 'set up '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3324
+      width: 256
+      height: 283
+    spriteID: a7fb67c6db60b5b4e9caa0957c118728
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -3908, y: 747}
+  - name: 'menu '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 630
+      height: 3312
+    spriteID: add0666da90ac924aa6e721283139e13
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -3724, y: -191}
+  - name: 'new save '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 642
+      y: 4
+      width: 1800
+      height: 510
+    spriteID: 0e9c870ffe0e5db4a843b09026ee3380
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 535, y: -1247}
+  - name: 'play '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 642
+      y: 522
+      width: 1800
+      height: 509
+    spriteID: 8a153eb1e7f47064e913956e325b90da
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 535, y: -155}
+  - name: 'quit '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 642
+      y: 1039
+      width: 1800
+      height: 489
+    spriteID: e0b3a2f384373a940974810ae938cc44
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 535, y: 905}
+  - name: quit flame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2450
+      y: 1039
+      width: 1411
+      height: 302
+    spriteID: d4a54b2ce24e6984783874e31cb46012
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2153, y: -1752}
+  - name: save flame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2450
+      y: 522
+      width: 1411
+      height: 302
+    spriteID: df4da87021aed9645b0fb6859a83a313
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2154, y: -1859}
+  - name: resume flame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2450
+      y: 4
+      width: 1411
+      height: 302
+    spriteID: 886f30daf117c4f4e8a2db6839310634
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2154, y: -1965}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 2048
+  importedTextureHeight: 2048
+  documentSize: {x: 4500, y: 4500}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 4096
+  textureActualHeight: 4096
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: 'back pack '
+    spriteName: 'back pack '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c8bf6bb6cf1c6ae42818f2d39366d5c7
+    layerID: 137
+    mosaicPosition: {x: 268, y: 3324}
+  - name: 'set up '
+    spriteName: 'set up '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a7fb67c6db60b5b4e9caa0957c118728
+    layerID: 136
+    mosaicPosition: {x: 4, y: 3324}
+  - name: 'menu '
+    spriteName: 'menu '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: add0666da90ac924aa6e721283139e13
+    layerID: 135
+    mosaicPosition: {x: 4, y: 4}
+  - name: 'new save '
+    spriteName: 'new save '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0e9c870ffe0e5db4a843b09026ee3380
+    layerID: 134
+    mosaicPosition: {x: 642, y: 4}
+  - name: 'play '
+    spriteName: 'play '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8a153eb1e7f47064e913956e325b90da
+    layerID: 133
+    mosaicPosition: {x: 642, y: 522}
+  - name: 'quit '
+    spriteName: 'quit '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e0b3a2f384373a940974810ae938cc44
+    layerID: 132
+    mosaicPosition: {x: 642, y: 1039}
+  - name: quit flame
+    spriteName: quit flame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d4a54b2ce24e6984783874e31cb46012
+    layerID: 131
+    mosaicPosition: {x: 2450, y: 1039}
+  - name: save flame
+    spriteName: save flame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: df4da87021aed9645b0fb6859a83a313
+    layerID: 130
+    mosaicPosition: {x: 2450, y: 522}
+  - name: resume flame
+    spriteName: resume flame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 886f30daf117c4f4e8a2db6839310634
+    layerID: 129
+    mosaicPosition: {x: 2450, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: UI_button Texture
+  prefabAssetName: UI_button Prefab
+  spriteLibAssetName: UI_button Sprite Lib
+  secondarySpriteTextures: []
