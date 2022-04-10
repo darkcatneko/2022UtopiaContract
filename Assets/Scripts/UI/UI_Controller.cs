@@ -21,6 +21,9 @@ public class UI_Controller : MonoBehaviour
     public Sprite[] DayCircle;
     public Sprite[] Player_status;
     public Animator MenuBar_animate;
+    //合成系統啟動
+    public GameObject craftingtable;
+
     private void Awake()
     {
         instance = this;
@@ -40,7 +43,7 @@ public class UI_Controller : MonoBehaviour
                 player.setAnimate();
                 player.playerState = PlayerState.BackpackChoosing;
             }
-            else if (BackPack.activeSelf == true)
+            else if (BackPack.activeSelf == true && player.playerState == PlayerState.BackpackChoosing)
             {
                 BackPack.SetActive(false);
                 player.playerState = PlayerState.FreeMove;
@@ -60,10 +63,14 @@ public class UI_Controller : MonoBehaviour
     }
     public void StopPressed()
     {
-        //MenuBar.SetActive(true);        
-        MenuBar_animate.SetBool("down", true);
-        player.playerState = PlayerState.MenuOpening;
-        StartCoroutine(Delay.DelayToInvokeDo(() => { Time.timeScale = 0f; }, 1f));                
+        //MenuBar.SetActive(true);    
+        if (MenuBar_animate.GetBool("up") == false&& MenuBar_animate.GetBool("down") == false)
+        {
+            MenuBar_animate.SetBool("down", true);
+            player.playerState = PlayerState.MenuOpening;
+            StartCoroutine(Delay.DelayToInvokeDo(() => { Time.timeScale = 0f; }, 1f));
+        }
+                
     }
     public void Resume()
     {
@@ -72,8 +79,14 @@ public class UI_Controller : MonoBehaviour
         if (BackPack.activeSelf)
         {
             player.playerState = PlayerState.BackpackChoosing;
+            MenuBar_animate.SetBool("up", true);
+            StartCoroutine(Delay.DelayToInvokeDo(() => {
+                MenuBar_animate.SetBool("down", false);
+                MenuBar_animate.SetBool("up", false);
+                player.playerState = PlayerState.FreeMove;
+            }, 1f));
         }
-        else
+        else if(MenuBar_animate.GetBool("up") == false && MenuBar_animate.GetBool("down") == true)
         {
             MenuBar_animate.SetBool("up", true);
             StartCoroutine(Delay.DelayToInvokeDo(() => {
@@ -103,6 +116,24 @@ public class UI_Controller : MonoBehaviour
             player.movement.z = 0;
             player.setAnimate();
             player.playerState = PlayerState.BackpackChoosing;
+        }
+    }
+    public void CraftingOpen()
+    {
+        if (craftingtable.activeSelf == true)
+        {
+            craftingtable.SetActive(false);
+            BackPack.SetActive(false);
+            player.playerState = PlayerState.FreeMove;
+        }
+        else if (BackPack.activeSelf == false && player.playerState == PlayerState.FreeMove)
+        {
+            BackPack.SetActive(true);
+            craftingtable.SetActive(true);
+            player.movement.x = 0;
+            player.movement.z = 0;
+            player.setAnimate();
+            player.playerState = PlayerState.Brewing;
         }
     }
     public void PlayerStatusUpdate()

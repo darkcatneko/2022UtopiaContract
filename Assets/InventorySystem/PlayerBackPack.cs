@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBackPack : MonoBehaviour
 {
+    public MouseItem _MouseItem = new MouseItem();
     public InventoryObject inventory;
+    public InventoryObject crafting;
     public ItemObject[] starterPack;
     private void Awake()
     {        
@@ -13,6 +15,7 @@ public class PlayerBackPack : MonoBehaviour
     private void Start()
     {
         inventory.Load();
+        crafting.Load();
         inventory.EmptyFarmLoad();
     }
     public void AddItemInBackPack(ItemObject item, int _amount)
@@ -23,6 +26,7 @@ public class PlayerBackPack : MonoBehaviour
     private void OnApplicationQuit()
     { 
         inventory.Clear();
+        crafting.Clear();
     }
     private void Update()
     {
@@ -42,5 +46,6 @@ public class PlayerBackPack : MonoBehaviour
     {
         InGameTime.instance.TimeSave(inventory.TimeData);//¦s®É¶¡
         inventory.Save();
+        crafting.Save();
     }
 }

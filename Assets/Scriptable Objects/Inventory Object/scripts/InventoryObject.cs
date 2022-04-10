@@ -152,6 +152,7 @@ public class InventoryObject : ScriptableObject,ISerializationCallbackReceiver
     [ContextMenu("Clear")]
     public void Clear()
     {
+        Debug.Log(124);
         for (int i = 0; i < Container.Length; i++)
         {
             Container[i].Reset();
@@ -194,6 +195,7 @@ public class InventoryObject : ScriptableObject,ISerializationCallbackReceiver
 [System.Serializable]
 public class InventorySlot
 {
+    public UserInterface parent;
     public int ID;
     public TrueItem item;
     public int amount;
