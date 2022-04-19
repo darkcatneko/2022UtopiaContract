@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Crafting_Area : MonoBehaviour
+public class Base_TO_RPG : MonoBehaviour
 {
     bool Incollider;
     Collider player;
@@ -19,14 +20,21 @@ public class Crafting_Area : MonoBehaviour
         if (others.gameObject.CompareTag("Player"))
         {
             Incollider = false;
-            player = null;           
+            player = null;
         }
     }
-    private void Update()
+    void Start()
     {
-        if (Incollider == true && Input.GetKeyDown(KeyCode.F) && UI_Controller.instance.player.playerState != PlayerState.Typing)
+        
+    }
+
+    
+    void Update()
+    {
+        if (Incollider == true && Input.GetKeyDown(KeyCode.F) && UI_Controller.instance.player.playerState == PlayerState.FreeMove)
         {
-            UI_Controller.instance.CraftingOpen();
+            player.GetComponentInParent<PlayerBackPack>().SaveButton();
+            SceneManager.LoadScene(2);
         }
     }
 }

@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class test2 : MonoBehaviour
 {
-    [SerializeField] Camera cam;
-    [SerializeField]GameObject target;
+    public Vector3 mousePosition;
+    public Camera screenCamera;
     void Start()
     {
-        Debug.Log(cam.ViewportToWorldPoint(new Vector3(1, 1)));
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.LookAt(target.transform);
-        transform.RotateAround(target.transform.position, Vector3.up, 1 * Time.deltaTime);
-
+        transform.position = Input.mousePosition;
     }
 }

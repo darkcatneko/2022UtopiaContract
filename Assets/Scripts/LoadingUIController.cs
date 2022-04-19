@@ -10,6 +10,8 @@ public class LoadingUIController : MonoBehaviour
     [SerializeField] GameObject Havefile;[SerializeField] GameObject DontHaveFile;
     [SerializeField]
     public InventoryObject inventory;
+    public InventoryObject craftingtable;
+    public InventoryObject PotionPack;
     public ItemObject[] starterPack;
     [SerializeField] string savePath;
     private void Start()
@@ -65,6 +67,10 @@ public class LoadingUIController : MonoBehaviour
         inventory.Clear();
         AddStarterItem();
         inventory.SaveEmpty();
+        craftingtable.Clear();
+        craftingtable.SaveEmpty();
+        PotionPack.Clear();
+        PotionPack.SaveEmpty();
         SceneManager.LoadScene(1);
     }
     public void PlayButton()

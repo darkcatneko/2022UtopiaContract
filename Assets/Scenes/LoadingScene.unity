@@ -367,6 +367,8 @@ MonoBehaviour:
   Havefile: {fileID: 1813377149}
   DontHaveFile: {fileID: 2025276603}
   inventory: {fileID: 11400000, guid: b38bd1e5a1fc8fb4bac9576bc43f3508, type: 2}
+  craftingtable: {fileID: 11400000, guid: ca8bcd7f90a3f204ab2d731e8a7e87d5, type: 2}
+  PotionPack: {fileID: 11400000, guid: c82864e32e17b7e42bef632d5dee28a1, type: 2}
   starterPack:
   - {fileID: 11400000, guid: bdbf9872279d21643bc989b4da6df11f, type: 2}
   - {fileID: 11400000, guid: 0e0af95f3b17cb640a22b36d408c11bb, type: 2}

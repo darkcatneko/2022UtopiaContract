@@ -17,6 +17,10 @@ MonoBehaviour:
     GAMEDAY: 1
     ENERGYWASTE: 0
     PASSSEC: 25200
+  BattleStatus:
+    Player_Level: 1
+    Player_Health: 20
+    Player_MaxHealth: 20
   emptyfarmData:
   - plantspaceID: 0
     Is_fertilize: 0
@@ -43,143 +47,223 @@ MonoBehaviour:
     plantState: 0
     which: 0
   Container:
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0
-  - ID: -1
+  - AllowedType: 
+    parent: {fileID: 0}
+    ID: -1
     item:
       Name: 
       Id: 0
       type: 0
       buffs: []
+      Player_named: 
+    Player_named: 
     amount: 0

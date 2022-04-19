@@ -11,10 +11,11 @@ public enum PlayerState
     BackpackChoosing,
     battling,
     MenuOpening,
+    Typing,
 }
 
 public class PlayerMovement : MonoBehaviour
-{
+{ 
     public float moveSpeed;
     public bool m_FacingRight = true;
     public Rigidbody rb;

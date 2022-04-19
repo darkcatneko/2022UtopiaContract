@@ -39,6 +39,7 @@ public class TrueItem
     public int Id;
     public ItemType type;
     public ItemBuff[] buffs;
+    public string Player_named;
     public TrueItem(ItemObject _item)
     {
         Name = _item.name;
@@ -49,6 +50,14 @@ public class TrueItem
         {
             buffs[i] = new ItemBuff(_item.buffs[i].min, _item.buffs[i].max);
             buffs[i].attribute = _item.buffs[i].attribute;
+        }
+        if (_item.type == ItemType.Potion)
+        {
+            Player_named = "???";
+        }
+        else
+        {
+            Player_named = _item.name;
         }
 }
 }

@@ -37,7 +37,7 @@ public class ItemBarDisplay : MonoBehaviour
         UpdateSlot();
         if (inventory.Container.Length>0)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q)&&UI_Controller.instance.player.playerState==PlayerState.FreeMove)
             {
                 audioSource =  GameObject.FindGameObjectWithTag("system").GetComponent<AudioSource>();
                 audioSource.PlayOneShot(ItemChangeSF,0.2f* GameObject.FindGameObjectWithTag("system").GetComponent<BGM_Center>().volume);
@@ -50,7 +50,7 @@ public class ItemBarDisplay : MonoBehaviour
                     Focus.GetComponent<RectTransform>().localPosition = GetPosition(MainToolNum);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && UI_Controller.instance.player.playerState == PlayerState.FreeMove)
             {
                 audioSource = GameObject.FindGameObjectWithTag("system").GetComponent<AudioSource>();
                 audioSource.PlayOneShot(ItemChangeSF, 0.2f * GameObject.FindGameObjectWithTag("system").GetComponent<BGM_Center>().volume);

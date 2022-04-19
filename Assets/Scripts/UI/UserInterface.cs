@@ -11,6 +11,8 @@ public abstract class UserInterface : MonoBehaviour
     public PlayerBackPack player;
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+
+    public GameObject decribe_block;
     void Start()
     {
         for (int i = 0; i < inventory.Container.Length; i++)
@@ -61,6 +63,12 @@ public abstract class UserInterface : MonoBehaviour
         if (itemsDisplayed.ContainsKey(obj))
         {
             player._MouseItem.hoverItem = itemsDisplayed[obj];
+            if (itemsDisplayed[obj].ID>=0)
+            {
+                decribe_block = Instantiate(Resources.Load<GameObject>("describe"), Input.mousePosition, Quaternion.identity);
+                decribe_block.GetComponent<Follow_mouse>().set_information(itemsDisplayed[obj].ID.ToString(), itemsDisplayed[obj].Player_named, inventory.GetItem(itemsDisplayed[obj].ID).description);
+            }
+     
         }
     }
     public void OnExit(GameObject obj)
@@ -68,7 +76,8 @@ public abstract class UserInterface : MonoBehaviour
         player._MouseItem.hoverobj = null;
 
         player._MouseItem.hoverItem = null;
-
+        Destroy(decribe_block);
+        decribe_block = null;
     }
     public void OnDragStart(GameObject obj)
     {
@@ -96,7 +105,10 @@ public abstract class UserInterface : MonoBehaviour
     {
         if (player._MouseItem.hoverobj)
         {
-            inventory.MoveItem(itemsDisplayed[obj],  player._MouseItem.hoverItem.parent.itemsDisplayed[player._MouseItem.hoverobj]);
+            if (player._MouseItem.hoverItem.CanPlaceInSlot(inventory.GetItem(itemsDisplayed[obj].ID)))
+            {
+                inventory.MoveItem(itemsDisplayed[obj], player._MouseItem.hoverItem.parent.itemsDisplayed[player._MouseItem.hoverobj]);
+            }            
         }
         else
         {

@@ -7,8 +7,11 @@ using UnityEngine.EventSystems;
 public class OnMouseEnter : MonoBehaviour 
 {
     public Animator scroller;
-    
-    
+    public static OnMouseEnter instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         

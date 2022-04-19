@@ -17,6 +17,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] GameObject MenuBar;
 
     public GameObject BackPack;
+    public GameObject PotionPack;
     public PlayerMovement player;
     public Sprite[] DayCircle;
     public Sprite[] Player_status;
@@ -38,6 +39,7 @@ public class UI_Controller : MonoBehaviour
             if ( BackPack.activeSelf == false && player.playerState == PlayerState.FreeMove)
             {
                 BackPack.SetActive(true);
+                PotionPack.SetActive(true);
                 player.movement.x = 0;
                 player.movement.z = 0;
                 player.setAnimate();
@@ -46,19 +48,14 @@ public class UI_Controller : MonoBehaviour
             else if (BackPack.activeSelf == true && player.playerState == PlayerState.BackpackChoosing)
             {
                 BackPack.SetActive(false);
+                PotionPack.SetActive(false);
                 player.playerState = PlayerState.FreeMove;
             }
             
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if ( BackPack.activeSelf == true)
-            {
-                //BackPack.SetActive(false);
-                MenuBar_animate.SetBool("down", true);
-                StartCoroutine(Delay.DelayToInvokeDo(() => { MenuBar_animate.enabled = false; }, 1f));
-                player.playerState = PlayerState.FreeMove;
-            }                
+            OnMouseEnter.instance.OnbuttonClick();
         }
     }
     public void StopPressed()
@@ -107,11 +104,13 @@ public class UI_Controller : MonoBehaviour
         if (BackPack.activeSelf == true)
         {
             BackPack.SetActive(false);
+            PotionPack.SetActive(false);
             player.playerState = PlayerState.FreeMove;
         }
         else if(BackPack.activeSelf == false && player.playerState == PlayerState.FreeMove)
         {
             BackPack.SetActive(true);
+            PotionPack.SetActive(true);
             player.movement.x = 0;
             player.movement.z = 0;
             player.setAnimate();

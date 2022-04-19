@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d29a7308b46f054d9bd770b7c258db7, type: 3}
+  m_Name: Player Potion Pack
+  m_EditorClassIdentifier: 
+  savePath: /PotionBar.save
+  TimeData:
+    GAMEDAY: 1
+    ENERGYWASTE: 0
+    PASSSEC: 25200
+  BattleStatus:
+    Player_Level: 1
+    Player_Health: 20
+    Player_MaxHealth: 20
+  emptyfarmData:
+  - plantspaceID: 0
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  - plantspaceID: 1
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  - plantspaceID: 2
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  - plantspaceID: 3
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  - plantspaceID: 4
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  - plantspaceID: 5
+    Is_fertilize: 0
+    plantState: 0
+    which: 0
+  Container:
+  - AllowedType: 00000000
+    parent: {fileID: 0}
+    ID: -1
+    item:
+      Name: 
+      Id: 0
+      type: 0
+      buffs: []
+      Player_named: 
+    amount: 0
+  - AllowedType: 00000000
+    parent: {fileID: 0}
+    ID: -1
+    item:
+      Name: 
+      Id: 0
+      type: 0
+      buffs: []
+      Player_named: 
+    amount: 0
+  - AllowedType: 00000000
+    parent: {fileID: 0}
+    ID: -1
+    item:
+      Name: 
+      Id: 0
+      type: 0
+      buffs: []
+      Player_named: 
+    amount: 0
+  - AllowedType: 00000000
+    parent: {fileID: 0}
+    ID: -1
+    item:
+      Name: 
+      Id: 0
+      type: 0
+      buffs: []
+      Player_named: 
+    amount: 0

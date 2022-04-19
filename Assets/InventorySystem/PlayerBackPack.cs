@@ -8,6 +8,7 @@ public class PlayerBackPack : MonoBehaviour
     public MouseItem _MouseItem = new MouseItem();
     public InventoryObject inventory;
     public InventoryObject crafting;
+    public InventoryObject PotionBack;
     public ItemObject[] starterPack;
     private void Awake()
     {        
@@ -16,6 +17,7 @@ public class PlayerBackPack : MonoBehaviour
     {
         inventory.Load();
         crafting.Load();
+        PotionBack.Load();
         inventory.EmptyFarmLoad();
     }
     public void AddItemInBackPack(ItemObject item, int _amount)
@@ -27,6 +29,7 @@ public class PlayerBackPack : MonoBehaviour
     { 
         inventory.Clear();
         crafting.Clear();
+        PotionBack.Clear();
     }
     private void Update()
     {
@@ -47,5 +50,6 @@ public class PlayerBackPack : MonoBehaviour
         InGameTime.instance.TimeSave(inventory.TimeData);//¦s®É¶¡
         inventory.Save();
         crafting.Save();
+        PotionBack.Save();
     }
 }
